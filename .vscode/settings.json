@@ -1,0 +1,23 @@
+{
+  // Editor
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    80,
+    110
+  ],
+
+  // handled by prettier
+  "json.format.enable": false,
+
+  "files.exclude": {
+    // https://code.visualstudio.com/docs/languages/typescript#_hiding-derived-javascript-files
+    "**/*.js": { "when": "$(basename).ts" },
+    "**/**.js": { "when": "$(basename).tsx" },
+    // https://github.com/Microsoft/vscode/issues/1214#issuecomment-284363881
+    "**/*.js.map": true,
+    "**/*.d.ts": true
+  },
+
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
