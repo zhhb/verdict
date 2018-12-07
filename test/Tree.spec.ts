@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { Operator } from '../src/Operator';
 import { DecisionTree } from '../src/Tree';
 
@@ -5,7 +7,33 @@ describe(`Tree`, () => {
   let tree: DecisionTree;
 
   beforeEach(() => {
-    tree = new DecisionTree(`Redwood`);
+    tree = new DecisionTree({ name: `Redwood` });
+  });
+
+  describe(`getLeaves`, () => {
+    let leafNodeValue = 'CoolValue!';
+
+    beforeEach(() => {
+      tree.addChild({
+        condition: { path: 'foo', operator: Operator.Equals, value: 'bar' },
+        children: [
+          {
+            condition: {
+              path: 'bar.baz',
+              operator: Operator.ContainsSubstring,
+              value: 'foo',
+            },
+            value: leafNodeValue,
+          },
+        ],
+      });
+    });
+
+    it(`returns only the leaves`, () => {
+      const leaves = tree.getLeaves();
+      expect(_.size(leaves)).toBe(1);
+      expect(leaves[0].value).toBe(leafNodeValue);
+    });
   });
 
   describe(`with an immediate LeafNode`, () => {

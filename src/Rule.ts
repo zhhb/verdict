@@ -31,6 +31,20 @@ export class Rule {
     }
   }
 
+  public get isCompoundRule() {
+    return _.has(this, 'and') || _.has(this, 'or');
+  }
+
+  public toJSON(): RuleDefinition {
+    if (this.isCompoundRule) {
+      if (this.and) return { and: _.map(this.and, rule => rule.toJSON()) };
+      if (this.or) return { or: _.map(this.or, rule => rule.toJSON()) };
+    } else {
+      const { path, operator, value } = this;
+      return { path, operator, value };
+    }
+  }
+
   /**
    * Evaluates a data object using its configured `path`, `operator`, and
    * `value` properties. Returns a boolean.

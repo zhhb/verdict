@@ -22,7 +22,7 @@ yarn add verdict
 import { DecisionTree, Operator } from 'verdict';
 
 // Create a new DecisionTree
-const tree = new DecisionTree('Redwood');
+const tree = new DecisionTree({ name: 'Redwood' });
 
 // Start by adding a child to the tree. Because the child doesn't specify a
 // `value`, it's assumed to be a "branch" node which means that it's expected to
