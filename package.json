@@ -1,6 +1,6 @@
 {
   "name": "verdict",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight rules engine/decision tree",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -16,6 +16,7 @@
     "prebuild": "rimraf 'src/**/*.{js,js.map,d.ts}'",
     "build": "tsc",
     "watch": "tsc -w",
+    "prepublish": "yarn build",
     "test": "jest"
   },
   "devDependencies": {
