@@ -27,16 +27,13 @@ const tree = new DecisionTree({ name: 'Redwood' });
 // Start by adding a child to the tree. Because the child doesn't specify a
 // `value`, it's assumed to be a "branch" node which means that it's expected to
 // have one or more children (at some point).
-tree.addChild({
+const child = tree.addChild({
   condition: {
     path: 'foo.bar',
     operator: Operator.Equals,
     value: 'baz',
   },
 });
-
-// Obtain a reference to the child node that we just made.
-const [child] = tree.getChildren();
 
 // Follow the same process for adding another descendent (grandchild in this
 // case). Note that it's not necessary to have this as a separate step. We

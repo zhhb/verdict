@@ -43,7 +43,9 @@ export class DecisionTree {
   }
 
   public addChild(child: NodeDefinition) {
-    this.children.push(new Node(child, this));
+    const childNode = new Node(child, this);
+    this.children.push(childNode);
+    return childNode;
   }
 
   public getChildren() {
@@ -108,7 +110,9 @@ export class Node {
           `You must first convert the node into a branch.`,
       );
     }
-    this.children.push(new Node(child, this));
+    const childNode = new Node(child, this);
+    this.children.push(childNode);
+    return childNode;
   }
 
   public getChildren() {
