@@ -1,6 +1,6 @@
 {
   "name": "verdict",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A lightweight rules engine/decision tree",
   "main": "src/index.js",
   "types": "src/index.d.ts",

@@ -91,7 +91,7 @@ export class Node {
     return {
       condition: condition.toJSON(),
       value,
-      children: _.map(children, child => child.toJSON()),
+      children: children ? _.map(children, child => child.toJSON()) : undefined,
     };
   }
 

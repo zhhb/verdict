@@ -37,8 +37,8 @@ export class Rule {
 
   public toJSON(): RuleDefinition {
     if (this.isCompoundRule) {
-      if (this.and) return { and: _.map(this.and, rule => rule.toJSON()) };
-      if (this.or) return { or: _.map(this.or, rule => rule.toJSON()) };
+      if (_.size(this.and)) return { and: _.map(this.and, rule => rule.toJSON()) };
+      if (_.size(this.or)) return { or: _.map(this.or, rule => rule.toJSON()) };
     } else {
       const { path, operator, value } = this;
       return { path, operator, value };
