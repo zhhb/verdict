@@ -1,7 +1,8 @@
 export * from './Operator';
 export * from './Rule';
-export * from './Tree';
+export * from './nodes';
+export * from './DecisionTree';
 
-import { DecisionTree } from './Tree';
+import { DecisionTree } from './DecisionTree';
 
 export default DecisionTree;

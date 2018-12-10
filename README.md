@@ -4,9 +4,10 @@ A lightweight decision tree/rules engine.
 
 ## Features
 
-* Support for complex branching logic
-* Support for `and`/`or` boolean logic
-* Wide range of operators supported
+- Support for complex branching logic
+- Support for `and`/`or` boolean logic
+- Wide range of operators supported
+- Support for "fallback" values so paths don't "fall through the cracks" once an initial condition is met
 
 ## Installation
 
@@ -22,7 +23,9 @@ yarn add verdict
 import { DecisionTree, Operator } from 'verdict';
 
 // Create a new DecisionTree
-const tree = new DecisionTree({ name: 'Redwood' });
+const tree = new DecisionTree({
+  condition: { path: 'quux', operator: Operator.Equals, value: 'bar' },
+});
 
 // Start by adding a child to the tree. Because the child doesn't specify a
 // `value`, it's assumed to be a "branch" node which means that it's expected to
@@ -50,11 +53,12 @@ child.addChild({
 });
 
 const data = {
+  quux: 'bar',
   foo: {
     bar: 'baz',
     baz: 'oOoQuuXoOo',
   },
-}
+};
 
 console.log(tree.evaluate(data)); // Yay! I'm a leaf node!
 ```
