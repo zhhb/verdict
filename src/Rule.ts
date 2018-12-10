@@ -22,17 +22,17 @@ export class Rule {
   private readonly operator?: Operator;
   private readonly value?: any;
 
+  public readonly isCompoundRule?: boolean;
+
   constructor(definition: RuleDefinition) {
     if (isCompoundRule(definition)) {
+      this.isCompoundRule = true;
       this.and = _.map(definition.and, rule => new Rule(rule));
       this.or = _.map(definition.or, rule => new Rule(rule));
     } else {
+      this.isCompoundRule = false;
       Object.assign(this, definition);
     }
-  }
-
-  public get isCompoundRule() {
-    return _.has(this, 'and') || _.has(this, 'or');
   }
 
   public toJSON(): RuleDefinition {
