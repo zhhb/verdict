@@ -4,7 +4,7 @@ import { LeafNode } from './nodes';
 import { BranchNode, BranchNodeDefinition } from './nodes/Branch';
 
 export class DecisionTree extends BranchNode {
-  private readonly fallbackValue?: any;
+  public fallbackValue?: any;
 
   constructor(definition: DecisionTreeDefinition) {
     // Pass `false` for the second parameter (`parent`) since this is the root node.
